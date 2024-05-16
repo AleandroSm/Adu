@@ -38,7 +38,8 @@ export const Viaje = () => {
                 {
                     viajeData.map((data, key) => (
                         data.fecha.split('T')[0] >= fechaActual.toISOString().split('T')[0]
-                        &&
+                        ?
+                        (
                         <div key={key} className="col">
                             <div className="card ">
                                 <img src={logo} className="card-img-top" alt="logo" style={{ width: "150px", height: "60px", objectFit: "cover" }} />
@@ -49,6 +50,9 @@ export const Viaje = () => {
                                 </div>
                             </div>
                         </div>
+                        ) : (
+                            <p className="display-2">Viajes no disponibles</p>
+                        )
                     ))
                 }
             </div>
