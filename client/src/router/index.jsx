@@ -15,6 +15,7 @@ import { Terminal } from "../user/pages/Terminal";
 import { Viaje } from "../user/pages/Viaje";
 import { Asiento } from "../user/pages/Asiento";
 import {Boleto} from "../user/pages/Boletos"
+import {Terminales} from '../administrador/pages/Terminales'
 
 
 export const router = createBrowserRouter([
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
                 path: "/administrador/boleto",
                 element: < Boletos />
             },
+            {
+                path: "/administrador/terminales",
+                element: <Terminales />
+            }
         ]
     },
 

@@ -22,11 +22,13 @@ export const getCiudad = async (req, res) => {
 
 export const createCiudad = async (req, res) => {
     try {
-        const { idCiudad,estado } = req.body
-        const [result] = await pool.query('INSERT INTO ciudad(idCiudad,estado) values (?,?)', [idCiudad, estado])
+        const { idCiudad,estado,latitud,longitud } = req.body
+        const [result] = await pool.query('INSERT INTO ciudad(idCiudad,estado,latitud,longitud) values (?,?,?,?)', [idCiudad, estado,latitud,longitud])
         res.json({
             idCiudad: result.insertId,
             estado,
+            latitud,
+            longitud
         })
     } catch (error) {
         console.log(error)
