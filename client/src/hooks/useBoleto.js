@@ -8,9 +8,14 @@ export const useBoleto = () => {
         const res = await getBoletosRequest()
         setBoletos(res.data)
     }
-    const handleCreateBoleto = async (values) => {
-        await createBoletoRequest(values) 
-        fetchBoletos()
+    const handleCreateBoleto = async (values, idViaje) => {
+        let seatsTaken = []
+        seatsTaken = await getAsientoByViajeRequest(idViaje);
+        
+        if(seatsTaken.data.every(seat => seat.asiento != values.asiento)){
+            await createBoletoRequest(values) 
+            fetchBoletos()
+        }else return alert("Asiento Ocupado")
     }
     const buyBoleto = async (values) => {
         const res = await createBoletoRequest(values)

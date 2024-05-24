@@ -14,7 +14,7 @@ const Foorm = ({initialValues, fields, holders,handleCreate,fetch,action,saveAct
                 try {
                     switch (action) {
                         case 'Guardar':
-                            handleCreate(values)
+                            handleCreate(values,values.idViaje)
                             break;
                         case 'Consultar':
                             fetch()
